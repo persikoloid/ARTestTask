@@ -6,15 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Test Task/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 28f64e4a74f60ef4cb322082ffeff61a,
+      type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 0cf644661aaf93141b9fd02e30d205da,
       type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
       guid: b00669e1b75d2714da60f8c35ee26ab5, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 3a122ded26400d445b3aa84db3514766, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: f723abb33e08ca643a7779446d02621a,
+      type: 2}
     com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 966498e70d807a449906dfe6602328be,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2d024d0bdfe8c1b4bbbc6ce80ccb00ed,
