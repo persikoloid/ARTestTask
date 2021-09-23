@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Test Task/Scenes/SampleScene.unity
+    path: Assets/Test Task/Scenes/Preloader.unity
+    guid: a79536f7d3c484948a07e373e4100b81
+  - enabled: 1
+    path: Assets/Test Task/Scenes/TestScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 28f64e4a74f60ef4cb322082ffeff61a,
