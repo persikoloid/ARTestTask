@@ -9,8 +9,8 @@ public class ScrollViewAnimated : MonoBehaviour
     private GameObject content;
     [FormerlySerializedAs("_view")] [SerializeField]
     private GameObject view;
-    [SerializeField] 
-    private Transform canvas;
+    [SerializeField] private Sprite _up, _down;
+    [SerializeField] private Image _image;
 
     private Vector2 _posView;
     private bool _isActive;
@@ -27,16 +27,17 @@ public class ScrollViewAnimated : MonoBehaviour
     {
         if (_isActive)
         {
-            //view.transform.localPosition = new Vector2(0, -Screen.height);
-            view.LeanMoveLocalY(-canvas.localPosition.y - _height, 0.5f).setEaseOutExpo();
+            view.LeanMoveLocalY(_posView.y - _height, 0.5f).setEaseOutExpo();
             content.SetActive(!_isActive);
             _isActive = !_isActive;
+            _image.sprite = _up;
         }
         else
         {
-            view.LeanMoveLocalY(-canvas.localPosition.y, 0.5f).setEaseInExpo();
+            view.LeanMoveLocalY(_posView.y, 0.5f).setEaseInExpo();
             content.SetActive(!_isActive);
             _isActive = !_isActive;
+            _image.sprite = _down;
         }
         
     }
