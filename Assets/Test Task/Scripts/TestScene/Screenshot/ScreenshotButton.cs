@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class ScreenshotButton : MonoBehaviour
@@ -26,6 +27,7 @@ public class ScreenshotButton : MonoBehaviour
         var rect = new Rect(0, 0, width, height);
         texture.ReadPixels(rect, 0, 0);
         texture.Apply();
+        captureCamera.targetTexture = null;
         var bytesScSh = texture.EncodeToJPG();
         var timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
         var path = Application.persistentDataPath + "/"+ timeStamp + ".jpg";

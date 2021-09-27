@@ -7,11 +7,15 @@ using UnityEngine.XR.ARSubsystems;
 
 namespace Test_Task.Scripts
 {
+    [RequireComponent(typeof(AudioSource))]
     public class Manager : MonoBehaviour
     {
         [FormerlySerializedAs("ARCamera")] [SerializeField] private Camera arCamera;
         [SerializeField]
         private GameObject planeMarker;
+
+        [SerializeField] private RectTransform canvas;
+        [SerializeField]
         private ARRaycastManager _aRRaycastManager;
         private EventHandler _eventHandler;
         
@@ -22,14 +26,16 @@ namespace Test_Task.Scripts
         private bool _isSelected;
         
         [FormerlySerializedAs("objectForSpawnn")] public GameObject objectForSpawn;
+        [SerializeField] private AudioClip clipForSpawn;
+        private AudioSource _audioSource;
 
         private Quaternion _yRotation;
 
         private void Start()
         {
             _eventHandler = FindObjectOfType<EventHandler>();
-            _aRRaycastManager = FindObjectOfType<ARRaycastManager>();
             planeMarker.SetActive(false);
+            _audioSource = GetComponent<AudioSource>();
         }
         
         private void Update()
@@ -38,19 +44,20 @@ namespace Test_Task.Scripts
             SelectForTransform();
             var isMarker = TrackMarker(aRRaycastHits);
             if (isMarker && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began
-                && !_isSelected)
+                && !_isSelected && !_eventHandler.isUi)
                 SpawnObject(aRRaycastHits);
-
+            
             if (_isSelected && Input.touchCount == 1) MoveObject();
             if (_isSelected && Input.touchCount == 2) ScaleObject();
             if (_isSelected && Input.touchCount == 3) RotateObject();
         }
         
         //Появление и исчезновение маркера при обнаружении и утери нужной поверхности
-        private bool TrackMarker(List<ARRaycastHit> aRRaycastHits) 
+        private bool TrackMarker(List<ARRaycastHit> aRRaycastHits)
         {
-            _aRRaycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), aRRaycastHits, TrackableType.Planes);
-            if (aRRaycastHits.Count != 0)
+            var center = new Vector2(Screen.width*0.5f, Screen.height*0.5f) ;
+            _aRRaycastManager.Raycast(center, aRRaycastHits, TrackableType.Planes);
+            if (aRRaycastHits.Count > 0)
             {
                 planeMarker.transform.position = aRRaycastHits[0].pose.position;
                 planeMarker.SetActive(true);
@@ -64,6 +71,8 @@ namespace Test_Task.Scripts
         private void SpawnObject(List<ARRaycastHit> aRRaycastHits)
         {
             Instantiate(objectForSpawn, aRRaycastHits[0].pose.position, objectForSpawn.transform.rotation);
+            _audioSource.Stop();
+            _audioSource.PlayOneShot(clipForSpawn);
         }
     
         //Передвижение объекта
@@ -76,13 +85,12 @@ namespace Test_Task.Scripts
             {
                 _aRRaycastHitsForMoved = new List<ARRaycastHit>();
                 _aRRaycastManager.Raycast(_touchPosition, _aRRaycastHitsForMoved, TrackableType.Planes);
-                _selectedObject = GameObject.FindWithTag("Selected");
                 _selectedObject.transform.position = _aRRaycastHitsForMoved[0].pose.position;
             }
 
             if (touch.phase != TouchPhase.Ended) return;
-            if (!_selectedObject.CompareTag("Selected")) return;
             _selectedObject.tag = "Unselected";
+            _selectedObject = null;
             _isSelected = false;
         }
         
@@ -103,8 +111,8 @@ namespace Test_Task.Scripts
 
             if (touch1.phase != TouchPhase.Ended && touch3.phase != TouchPhase.Ended &&
                 touch2.phase != TouchPhase.Ended) return;
-            if (!_selectedObject.CompareTag("Selected")) return;
             _selectedObject.tag = "Unselected";
+            _selectedObject = null;
             _isSelected = false;
         }
         
@@ -125,8 +133,8 @@ namespace Test_Task.Scripts
             }
 
             if (touch1.phase != TouchPhase.Ended && touch2.phase != TouchPhase.Ended) return;
-            if (!_selectedObject.CompareTag("Selected")) return;
             _selectedObject.tag = "Unselected";
+            _selectedObject = null;
             _isSelected = false;
         }
         
@@ -141,6 +149,7 @@ namespace Test_Task.Scripts
             if (!Physics.Raycast(ray, out var hitObject)) return;
             if (!hitObject.collider.CompareTag("Unselected")) return;
             hitObject.collider.gameObject.tag = "Selected";
+            _selectedObject = GameObject.FindWithTag("Selected");
             _isSelected = true;
         }
     }

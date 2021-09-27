@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5005317942669445465
 Transform:
   m_ObjectHideFlags: 0
@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d180956a54db4646a1c6342921672ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TrackingStateVisibilityThreshold: 2
+  m_HideSubsumed: 1
 --- !u!64 &5005317942669445444
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class InfoButton : MonoBehaviour
         if (!_isActive)
         {
             textMeshPro.transform.localPosition = new Vector2(0, posBox.y + _height);
-            textMeshPro.transform.LeanMoveLocalY(posBox.y, 0.5f).setEaseOutExpo().delay = 0.1f;
+            textMeshPro.transform.LeanMoveLocalY(posBox.y, 0.5f).setEaseOutExpo();
             _image.sprite = _close;
         }
         else _image.sprite = _info;
