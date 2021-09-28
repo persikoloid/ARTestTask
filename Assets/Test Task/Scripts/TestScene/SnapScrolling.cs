@@ -1,22 +1,28 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-namespace Test_Task.Scripts
+namespace Test_Task.Scripts.TestScene
 {
     public class SnapScrolling : MonoBehaviour
     {
-        [Range(1, 50)]
-        [Header("Controllers")]
-        public int panCount;
-        [Range(0, 500)]
-        public int panOffset;
+        [SerializeField] private ButtonScroll buttonScrollData;
+        
+        private int panCount;
+        
+        [Range(0, 500)][SerializeField]
+        private int panOffset;
         [Range(0f, 20f)]
-        public float snapSpeed;
+        [SerializeField]
+        private float snapSpeed;
         [Range(0f, 10f)]
-        public float scaleSpeed;
+        [SerializeField]
+        private float scaleSpeed;
         [Range(0f, 5f)]
-        public float scaleOffset;
-        [Header("Other Objects")]
-        public GameObject[] panPrefab;
+        [SerializeField]
+        private float scaleOffset;
+
+        [Header("Префаб кнопки")] [SerializeField]
+        private GameObject panPrefab;
 
         private GameObject[] _instPans;
         private Vector2[] _pansPos;
@@ -31,15 +37,18 @@ namespace Test_Task.Scripts
         private void Start()
         {
             _contentRect = GetComponent<RectTransform>();
+            panCount = buttonScrollData.modelPrefab.Count;
             _instPans = new GameObject[panCount];
             _pansPos = new Vector2[panCount];
             _panScale = new Vector2[panCount];
             for(int i = 0; i < panCount; i++)
             {
-                _instPans[i] = Instantiate(panPrefab[i], transform, false);
+                panPrefab.GetComponent<Image>().sprite = buttonScrollData.buttonSprite[i];
+                panPrefab.GetComponent<ChooseObject>().setObject = buttonScrollData.modelPrefab[i];
+                _instPans[i] = Instantiate(panPrefab, transform, false);
                 if (i == 0) continue;
                 _instPans[i].transform.localPosition = new Vector2(_instPans[i - 1].transform.localPosition.x + 
-                                                                   panPrefab[i].GetComponent<RectTransform>().sizeDelta.x + panOffset, 
+                                                                   panPrefab.GetComponent<RectTransform>().sizeDelta.x + panOffset, 
                     _instPans[i].transform.localPosition.y);
                 _pansPos[i] = -_instPans[i].transform.localPosition;
             }
@@ -48,7 +57,7 @@ namespace Test_Task.Scripts
         private void FixedUpdate()
         {
             float nearestPos = float.MaxValue;
-            for (int i = 0; i< panCount; i++)
+            for (int i = 0; i < panCount; i++)
             {
                 float distance = Mathf.Abs(_contentRect.anchoredPosition.x - _pansPos[i].x); 
                 if (distance < nearestPos)

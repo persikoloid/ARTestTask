@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1827,8 +1827,6 @@ MonoBehaviour:
   arCamera: {fileID: 1083855772}
   planeMarker: {fileID: 7369276666731364802, guid: 043af8d2c8a222045a4d88f5b5db80a3,
     type: 3}
-  canvas: {fileID: 1812773419}
-  _aRRaycastManager: {fileID: 1133904410}
   objectForSpawn: {fileID: 0}
   clipForSpawn: {fileID: 8300000, guid: bcbc5e0eea678324ca119b8cd1f437ed, type: 3}
 --- !u!114 &1133904410
@@ -1980,7 +1978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 0}
+  m_PlanePrefab: {fileID: 5005317942669445440, guid: b5d92212d3678f94c8d84a99041f14a3,
+    type: 3}
   m_DetectionMode: 1
 --- !u!1 &1170157907
 GameObject:

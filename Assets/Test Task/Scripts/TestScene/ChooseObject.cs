@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Test_Task.Scripts
+namespace Test_Task.Scripts.TestScene
 {
     public class ChooseObject : MonoBehaviour
     {
-        [Header("Объекты для спавна на экране")]
         [SerializeField]
         private GameObject objectForSpawn;
         private Manager _manager;
+
+        public GameObject setObject
+        {
+            set
+            {
+                objectForSpawn = value;
+            }
+        }
 
         private void Start()
         {

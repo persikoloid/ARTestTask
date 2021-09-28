@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-namespace Test_Task.Scripts
+namespace Test_Task.Scripts.TestScene
 {
     [RequireComponent(typeof(AudioSource))]
     public class Manager : MonoBehaviour
@@ -14,7 +14,7 @@ namespace Test_Task.Scripts
         [SerializeField]
         private GameObject planeMarker;
         
-        [SerializeField]
+        
         private ARRaycastManager _aRRaycastManager;
         private EventHandler _eventHandler;
         
@@ -32,6 +32,7 @@ namespace Test_Task.Scripts
 
         private void Start()
         {
+            _aRRaycastManager = FindObjectOfType<ARRaycastManager>();
             _eventHandler = FindObjectOfType<EventHandler>();
             planeMarker.SetActive(false);
             _audioSource = GetComponent<AudioSource>();
@@ -44,7 +45,7 @@ namespace Test_Task.Scripts
             var isMarker = TrackMarker(aRRaycastHits);
             if (isMarker && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began
                 && !_isSelected && !_eventHandler.isUi)
-                SpawnObject(aRRaycastHits);
+                SpawnObject();
             
             if (_isSelected && Input.touchCount == 1) MoveObject();
             if (_isSelected && Input.touchCount == 2) ScaleObject();
@@ -67,9 +68,9 @@ namespace Test_Task.Scripts
         }
 
         //Создание объекта
-        private void SpawnObject(List<ARRaycastHit> aRRaycastHits)
+        private void SpawnObject()
         {
-            Instantiate(objectForSpawn, aRRaycastHits[0].pose.position, objectForSpawn.transform.rotation);
+            Instantiate(objectForSpawn, planeMarker.transform.position, objectForSpawn.transform.rotation);
             _audioSource.Stop();
             _audioSource.PlayOneShot(clipForSpawn);
         }
