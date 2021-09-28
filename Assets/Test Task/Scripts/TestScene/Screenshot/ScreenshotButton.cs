@@ -10,7 +10,8 @@ public class ScreenshotButton : MonoBehaviour
     private Camera captureCamera;
     [SerializeField]
     private GameObject screenEffect;
-
+    [SerializeField] private Canvas _canvas;
+    
     private GameObject screenEffectForDestroy;
     public void ScreenShot()
     {
@@ -34,8 +35,6 @@ public class ScreenshotButton : MonoBehaviour
         File.WriteAllBytes(path, bytesScSh);
         Debug.Log(path);
         yield return new WaitForEndOfFrame();
-        screenEffectForDestroy = Instantiate (screenEffect, new Vector2(0f, 0f), Quaternion.identity);
-        yield return new WaitForSecondsRealtime(0.05f);
-        Destroy(screenEffectForDestroy);
+        Instantiate (screenEffect, new Vector2(0f, 0f), Quaternion.identity);
     }
 }

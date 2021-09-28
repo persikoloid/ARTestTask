@@ -13,8 +13,7 @@ namespace Test_Task.Scripts
         [FormerlySerializedAs("ARCamera")] [SerializeField] private Camera arCamera;
         [SerializeField]
         private GameObject planeMarker;
-
-        [SerializeField] private RectTransform canvas;
+        
         [SerializeField]
         private ARRaycastManager _aRRaycastManager;
         private EventHandler _eventHandler;
