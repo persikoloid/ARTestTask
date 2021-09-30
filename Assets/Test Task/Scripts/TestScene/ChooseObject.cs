@@ -8,6 +8,8 @@ namespace Test_Task.Scripts.TestScene
         [SerializeField]
         private GameObject objectForSpawn;
         private Manager _manager;
+        [SerializeField] private HelperManager _helperManager;
+        private bool _isChoose = false;
 
         public GameObject setObject
         {
@@ -26,6 +28,11 @@ namespace Test_Task.Scripts.TestScene
         private void SetObject()
         {
             _manager.objectForSpawn = objectForSpawn;
+            if (!_isChoose)
+            {
+                _isChoose = true;
+                _helperManager.IsModel(_isChoose);
+            }
         }
     }
 }

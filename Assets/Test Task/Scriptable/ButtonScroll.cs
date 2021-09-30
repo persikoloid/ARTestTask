@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [CreateAssetMenu(fileName = "ButtonScroll", menuName = "TestScriptable/buttonScroll", order = 51)]
 public class ButtonScroll : ScriptableObject

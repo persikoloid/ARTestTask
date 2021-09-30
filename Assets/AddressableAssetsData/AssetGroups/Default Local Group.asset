@@ -16,7 +16,63 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: fc271bdedc5654b41a80ea1e11ae3f52
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: ae2b37b99e4970c45b2722a9ebeeb364
+    m_Address: CheckModel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65df43ec1da1af744b38cb8ca78ab272
+    m_Address: MovedPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7ddda0c27b8ef904882ac5f1d0bfa7e7
+    m_Address: RotatePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6c78b5d70e8882d48b49c7731d26b046
+    m_Address: ScalePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7aab7b4c40d83a64690b897f1b698c5b
+    m_Address: ScanPlanes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cdee62f57409f814ea249ad48f6514bd
+    m_Address: SpawnPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bcf916b96dab9894cbbc92ba4cce8b49
+    m_Address: Gallery
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d3a9898e22901924b98de4fff69bf9e6
+    m_Address: Bus_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1eb894c97da32c940a90228cac9bea1c
+    m_Address: Car_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 388d83314c9e51c40956fb6908979eee
+    m_Address: Car_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6d56b50e711a5204d9059e0c99b70eda
+    m_Address: Car_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 558e73634b44f39458a7ea4a8a56976a
+    m_Address: Car_4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7500aebe3382441458c34a315bb6842b
+    m_Address: Police_car
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ea7ae610a716a634eac09977879d2328
+    m_Address: Button (1)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f92cbfe4efecd3a43aea6cd586280be6, type: 2}
   m_SchemaSet:

@@ -12,15 +12,13 @@ GameObject:
   - component: {fileID: 7369276666731364815}
   - component: {fileID: 7369276666731364812}
   - component: {fileID: 7369276666731364813}
-  - component: {fileID: 1505449140866218503}
-  - component: {fileID: 2800425483613715437}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7369276666731364814
 Transform:
   m_ObjectHideFlags: 0
@@ -98,31 +96,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1505449140866218503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7369276666731364802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f66da7470dce8f4d821d71dd2b1d4ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_DestroyOnRemoval: 1
-  m_VertexChangedThreshold: 0.01
---- !u!114 &2800425483613715437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7369276666731364802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d180956a54db4646a1c6342921672ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackingStateVisibilityThreshold: 1
-  m_HideSubsumed: 1

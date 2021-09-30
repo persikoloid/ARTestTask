@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class OpenGallery : MonoBehaviour
 {
-    [SerializeField] private GameObject gallery;
-    [SerializeField] private GameObject parentCanvas;
+    [SerializeField] private AssetReference gallery;
+    [SerializeField] private Canvas parentCanvas;
     public void OpenGalleryClick()
     {
-        Instantiate(gallery, new Vector2(0f, 0f), Quaternion.identity)
-            .transform.SetParent(parentCanvas.transform);
+        Addressables.InstantiateAsync(gallery, new Vector2(0,0),Quaternion.identity, null, true);
     }
 }
